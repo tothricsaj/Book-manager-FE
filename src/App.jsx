@@ -1,4 +1,4 @@
-import BookList from './components/Book/book-list/book-list';
+import { BookList } from './components/Book';
 
 export function App() {
   return (
