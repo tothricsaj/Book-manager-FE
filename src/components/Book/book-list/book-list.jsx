@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
+import {BookListElement, BookListElementFragment} from '../book-list-element/book-list-element';
+
 const gqlQuery = {
 	query: `
 		query BookList {
 			books {
-				id
-				title
-				author
-				genre
-				pubYear
+				...BookListElementFragment
 			}
 		}
+
+		${BookListElementFragment}
 	`
 }
 
@@ -33,15 +33,11 @@ export const BookList = () => {
 		}
 
 		fetchingData();
-
-		console.log(bookList);
 	}, []);
 
 	const books = useMemo(() => {
 		return bookList.map(book => (
-			<li key={book.id}>
-				{book.title}
-			</li>
+			<BookListElement key={`book-list-element-${book.id}`} data={book} />
 		))
 	}, [bookList]);
 
