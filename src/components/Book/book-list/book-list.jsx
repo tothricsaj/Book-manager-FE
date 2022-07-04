@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import * as classes from './book-list.module.css';
 
 import {BookListElement, BookListElementFragment} from '../book-list-element/book-list-element';
 
@@ -42,10 +43,9 @@ export const BookList = () => {
 	}, [bookList]);
 
 	return (
-		<>
-			<h2>BookList</h2>
-			<ul>{ books }</ul>
-		</>
+		<div className={classes.wrapper}>
+			<ul className={classes.bookListWrapper}>{ books }</ul>
+		</div>
 	);
 }
 

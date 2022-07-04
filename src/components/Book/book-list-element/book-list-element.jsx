@@ -16,10 +16,18 @@ export const BookListElement = ({ data }) => {
 
 	return (
 		<li data-book-id={id} className={classes.wrapper}>
-			<h3>{ title }</h3>
-			<h4>{ author }</h4>
-			<p>{ genre }</p>
-			<p>{ pubYear}</p>
+			<div>
+				<h3>{ title }</h3>
+			</div>
+			<div>
+				<h4>{ author }</h4>
+			</div>
+			<div>
+				<p>{ genre }</p>
+			</div>
+			<div>
+				<p>{ pubYear}</p>
+			</div>
 		</li>
 	);
 };

@@ -1,0 +1,9 @@
+.wrapper {
+	width: 60vw;
+	margin: auto;
+}
+
+.bookListWrapper {
+	display: flex;
+	flex-wrap: wrap;
+}
