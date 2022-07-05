@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import * as classes from './book-list.module.css';
 
+import { Link, Outlet } from "react-router-dom";
+
 import {BookListElement, BookListElementFragment} from '../book-list-element/book-list-element';
 
 const gqlQuery = {
@@ -38,13 +40,16 @@ export const BookList = () => {
 
 	const books = useMemo(() => {
 		return bookList.map(book => (
-			<BookListElement key={`book-list-element-${book.id}`} data={book} />
+			<Link to={`/book/${book.id}`} key={`book-list-element-${book.id}`}>
+				<BookListElement data={book} />
+			</Link>
 		))
 	}, [bookList]);
 
 	return (
 		<div className={classes.wrapper}>
 			<ul className={classes.bookListWrapper}>{ books }</ul>
+			<Outlet />
 		</div>
 	);
 }

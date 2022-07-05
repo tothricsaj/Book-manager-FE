@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as classes from './book-list-element.module.css';
 
 export const BookListElementFragment = `
