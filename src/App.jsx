@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 
 import { Home } from './components/Home/Home';
-import { BookList, BookPage } from './components/Book';
+import { BookList, BookPage, BookForm } from './components/Book';
 
 export function App() {
   return (
@@ -15,6 +15,7 @@ export function App() {
           <Route path="/" element={<Home />} />
           <Route path="books" element={<BookList />} />
           <Route path="book/:bookId" element={<BookPage />} />
+          <Route path="book/update/:bookId" element={<BookForm />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const graphqlQuery = {
 	query: 
 		`
 			query BookById($bookById: queryParamInput) {
 				complexBookSearch(params: $bookById) {
+					id
 					title
 					author
 					genre
+					pubYear
 				}
 			}
 		`,
@@ -45,6 +47,11 @@ export const BookPage = () => {
 	return (
 		<>
 			<h2>{book.title}</h2>
+			<h3>{book.author}</h3>
+			<h3>{book.genre}</h3>
+			<h3>{book.pubYear}</h3>
+
+			<Link to={`/book/update/${book.id}`}>Update</Link>
 		</>
 	)
 };
