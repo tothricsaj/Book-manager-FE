@@ -5,8 +5,7 @@ import {
 } from "react-router-dom";
 
 import { Home } from './components/Home/Home';
-import { BookList } from './components/Book';
-import { BookPage } from "./components/Book/book-page/book-page";
+import { BookList, BookPage } from './components/Book';
 
 export function App() {
   return (
