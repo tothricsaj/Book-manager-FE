@@ -16,9 +16,9 @@ const graphqlQuery = {
 		`,
 }
 
-export const BookPage = () => {
+export const BookPage = ({manageBook}) => {
 	const urlParams = useParams();
-	const [book, setBook] = useState({});
+	const { book, setBook } = manageBook;
 
 	useEffect(() => {
 
@@ -46,10 +46,10 @@ export const BookPage = () => {
 
 	return (
 		<>
-			<h2>{book.title}</h2>
-			<h3>{book.author}</h3>
-			<h3>{book.genre}</h3>
-			<h3>{book.pubYear}</h3>
+			<h2>{book.title || 'title'}</h2>
+			<h3>{book.author || 'author'}</h3>
+			<h3>{book.genre || 'genre'}</h3>
+			<h3>{book.pubYear || 'pubYear'}</h3>
 
 			<Link to={`/book/update/${book.id}`}>Update</Link>
 		</>
