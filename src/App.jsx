@@ -25,7 +25,7 @@ export function App() {
           <Route path="/" element={<Home />} />
           <Route path="books" element={<BookList />} />
           <Route path="book/:bookId" element={<BookPage manageBook={manageBook} />} />
-          <Route path="book/update/:bookId" element={<BookForm />} />
+          <Route path="book/update/:bookId" element={<BookForm book={chosenBook} />} />
         </Routes>
       </BrowserRouter>
     </>
