@@ -57,7 +57,7 @@ export const BookForm = ({book}) => {
 			...(title !== refTitle.current.value) ? {title: refTitle.current.value} : null,
 			...(author !== refAuthor.current.value) ? {author: refAuthor.current.value} : null,
 			...(genre !== refGenre.current.value) ? {genre: refGenre.current.value} : null,
-			...(pubYear !== refPubYear.current.value) ? {pubYear: refPubYear.current.value} : null,
+			...(pubYear.toString() !== refPubYear.current.value) ? {pubYear: refPubYear.current.value} : null,
 		}
 	}
 
