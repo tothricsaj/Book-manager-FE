@@ -26,10 +26,10 @@ export const BookForm = ({book}) => {
 	const [queryVar, setQueryVar] = useState({});
 	const [inputsVals, setInputsVals] = useState(bookInitValue);
 
-	const bookTitle = useRef(title);
-	const bookAuthor = useRef(author);
-	const bookGenre = useRef(genre);
-	const bookPubYear = useRef(pubYear);
+	const bookTitle = useRef(null);
+	const bookAuthor = useRef(null);
+	const bookGenre = useRef(null);
+	const bookPubYear = useRef(null);
 
 	useEffect(() => {
 		setInputsVals({
@@ -61,13 +61,22 @@ export const BookForm = ({book}) => {
 		}
 	}
 
+	const updateBook = (event) => {
+		event.preventDefault();
+		console.log('queryVar onSubmit -> ', queryVar);
+	};
+
 	return (
 		<>
 			<h2>BookForm</h2>
-			<input type="text" name="title" value={inputsVals.title} ref={bookTitle} onChange={handleInputChange} />
-			<input type="text" name="author" value={inputsVals.author} ref={bookAuthor} onChange={handleInputChange}/>
-			<input type="text" name="genre" value={inputsVals.genre} ref={bookGenre} onChange={handleInputChange}/>
-			<input type="text" name="pubYear" value={inputsVals.pubYear} ref={bookPubYear} onChange={handleInputChange}/>
+			<form onSubmit={updateBook}>
+				<input type="text" name="title" value={inputsVals.title} ref={bookTitle} onChange={handleInputChange} />
+				<input type="text" name="author" value={inputsVals.author} ref={bookAuthor} onChange={handleInputChange}/>
+				<input type="text" name="genre" value={inputsVals.genre} ref={bookGenre} onChange={handleInputChange}/>
+				<input type="text" name="pubYear" value={inputsVals.pubYear} ref={bookPubYear} onChange={handleInputChange}/>
+				
+				<input type="submit" value="Update book" />
+			</form>
 		</>
 	)
 }
