@@ -26,10 +26,10 @@ export const BookForm = ({book}) => {
 	const [queryVar, setQueryVar] = useState({});
 	const [inputsVals, setInputsVals] = useState(bookInitValue);
 
-	const bookTitle = useRef(null);
-	const bookAuthor = useRef(null);
-	const bookGenre = useRef(null);
-	const bookPubYear = useRef(null);
+	const refTitle = useRef(null);
+	const refAuthor = useRef(null);
+	const refGenre = useRef(null);
+	const refPubYear = useRef(null);
 
 	useEffect(() => {
 		setInputsVals({
@@ -54,10 +54,10 @@ export const BookForm = ({book}) => {
 
 	const createQueryVariables = () => {
 		return {
-			...(title !== bookTitle.current.value) ? {title: bookTitle.current.value} : null,
-			...(author !== bookAuthor.current.value) ? {author: bookAuthor.current.value} : null,
-			...(genre !== bookGenre.current.value) ? {genre: bookGenre.current.value} : null,
-			...(pubYear !== bookPubYear.current.value) ? {pubYear: bookPubYear.current.value} : null,
+			...(title !== refTitle.current.value) ? {title: refTitle.current.value} : null,
+			...(author !== refAuthor.current.value) ? {author: refAuthor.current.value} : null,
+			...(genre !== refGenre.current.value) ? {genre: refGenre.current.value} : null,
+			...(pubYear !== refPubYear.current.value) ? {pubYear: refPubYear.current.value} : null,
 		}
 	}
 
@@ -70,10 +70,10 @@ export const BookForm = ({book}) => {
 		<>
 			<h2>BookForm</h2>
 			<form onSubmit={updateBook}>
-				<input type="text" name="title" value={inputsVals.title} ref={bookTitle} onChange={handleInputChange} />
-				<input type="text" name="author" value={inputsVals.author} ref={bookAuthor} onChange={handleInputChange}/>
-				<input type="text" name="genre" value={inputsVals.genre} ref={bookGenre} onChange={handleInputChange}/>
-				<input type="text" name="pubYear" value={inputsVals.pubYear} ref={bookPubYear} onChange={handleInputChange}/>
+				<input type="text" name="title" value={inputsVals.title} ref={refTitle} onChange={handleInputChange} />
+				<input type="text" name="author" value={inputsVals.author} ref={refAuthor} onChange={handleInputChange}/>
+				<input type="text" name="genre" value={inputsVals.genre} ref={refGenre} onChange={handleInputChange}/>
+				<input type="text" name="pubYear" value={inputsVals.pubYear} ref={refPubYear} onChange={handleInputChange}/>
 				
 				<input type="submit" value="Update book" />
 			</form>
