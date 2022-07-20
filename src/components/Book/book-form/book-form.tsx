@@ -21,7 +21,7 @@ const bookInitValue = {
 
 
 export const BookForm = ({book}) => {
-	const { title, author, genre, pubYear } = book;
+	const { id, title, author, genre, pubYear } = book;
 
 	const [queryVar, setQueryVar] = useState({});
 	const [inputsVals, setInputsVals] = useState(bookInitValue);
@@ -38,6 +38,8 @@ export const BookForm = ({book}) => {
 			genre: genre,
 			pubYear: pubYear
 		})
+		console.log('id type -> ', typeof +id);
+		
 	}, []);
 
 	const handleInputChange = (event) => {
@@ -49,11 +51,11 @@ export const BookForm = ({book}) => {
 		});
 
 		setQueryVar(createQueryVariables());
-		console.log('queryVar -> ', queryVar);
 	};
 
 	const createQueryVariables = () => {
 		return {
+			id: +id,
 			...(title !== refTitle.current.value) ? {title: refTitle.current.value} : null,
 			...(author !== refAuthor.current.value) ? {author: refAuthor.current.value} : null,
 			...(genre !== refGenre.current.value) ? {genre: refGenre.current.value} : null,
@@ -63,12 +65,30 @@ export const BookForm = ({book}) => {
 
 	const updateBook = (event) => {
 		event.preventDefault();
-		console.log('queryVar onSubmit -> ', queryVar);
+		graphqlQuery.variables.bookValues = queryVar;
+
+		console.log('graphqlQuery.variables -> ', graphqlQuery.variables);
+		
+
+		const fetchingData = async () => {
+			const response = await fetch('http://localhost:3005/graphql', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(graphqlQuery)
+			});
+			const updatedBook = await response.json();
+			console.log('updatedBook -> ', updatedBook);
+			
+		};
+
+		fetchingData();
 	};
 
 	return (
 		<>
-			<h2>BookForm</h2>
+			<h2>BookForm {id}</h2>
 			<form onSubmit={updateBook}>
 				<input type="text" name="title" value={inputsVals.title} ref={refTitle} onChange={handleInputChange} />
 				<input type="text" name="author" value={inputsVals.author} ref={refAuthor} onChange={handleInputChange}/>

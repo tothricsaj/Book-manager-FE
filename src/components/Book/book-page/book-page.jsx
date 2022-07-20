@@ -30,7 +30,7 @@ export const BookPage = ({manageBook}) => {
 
 		const fetchingData = async () => {
 			const response = await fetch('http://localhost:3005/graphql', {
-				method: 'POST',
+				method: 'POST', // TODO: is it surley POST?
 				headers: {
 					'Content-Type': 'application/json'
 				},
